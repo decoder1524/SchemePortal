@@ -6,13 +6,11 @@ import UserProfile from './../../UserProfile'
 const GetUsers = ({ users, setUsers, allResults }) => {
     const user = JSON.parse(localStorage.getItem("user"))
     // console.log(allResults);
-
     const [showProfile, setShowProfile] = useState({});
     const [showModal, setShowModal] = useState(false);
     const [showEditModal, setShowEditModal] = useState(false);
     const [search,setSearch] = useState("");
-    const navigate = useNavigate();
-    // const filteredUser =  
+    const navigate = useNavigate();  
     const handleProfile = async (userId) => {
         try {
             const res = await getProfile(userId);
@@ -39,14 +37,17 @@ const GetUsers = ({ users, setUsers, allResults }) => {
     const handleUpdate = (userId) => {
         navigate(`/edit-user/${userId}`)
     }
-    useEffect(()=>{
+    
 
-    },[users])
     return (
         <>
         <div className='container w-full h-10 flex '>
         <input type="text" className='p-2 min-w-100 m-auto border rounded border-blue-300' placeholder='Search user by Email' value={search} onChange={(e)=> setSearch(e.target.value)}  />
         </div>
+        {/* <div className='container w-full h-10 flex justify-center'>
+        <input type="checkbox" name="users" id="users" onChange={handleChange} value={'users'} /><label htmlFor="users" className='p-2 cursor-pointer'> Users</label>
+        <input type="checkbox" name="officers" id="officers" onChange={handleChange} value={'officers'}/><label htmlFor="officers" className='p-2 cursor-pointer'> Officers</label>
+        </div> */}
             <div className='overflow-hidden overflow-x-auto rounded-2xl border-2 border-gray-700 mt-10'>
                 <table className='bg-white  m-auto  sm:w-full'>
                     <thead>

@@ -26,7 +26,7 @@ const UserProfile = () => {
 
   return (
     <>
-      <div className="container mt-7 m-auto border max-sm:w-fit max-w-3xl p-4  rounded-3xl shadow-2xl  border-green-500">
+      <div className="container mt-7 m-auto border max-sm:w-80 max-w-3xl p-4  rounded-3xl shadow-2xl  border-green-500">
         <h1 className='text-center text-4xl text-blue-600  font-bold' >
           {user?.user?.role === 'admin' || user?.user?.role === 'officer' ? (user?.user?.role === 'officer' ? 'Officer' : 'Admin') : 'Citizen'} Profile</h1>
         <img src={
@@ -37,32 +37,32 @@ const UserProfile = () => {
 
         <div className="container ">
           <label className='ml-45 text-cyan-700 font-semibold max-sm:m-0'>Name</label>
-          <input type='text' readOnly disabled className='p-2 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl' value={`${userData?.firstName} ${userData?.lastName}`} />
+          <input type='text' readOnly disabled className='p-2 border flex m-auto rounded-lg my-2 w-96 border-blue-500 shadow-2xl max-sm:w-70' value={`${userData?.firstName} ${userData?.lastName}`} />
           <label className='ml-45 text-cyan-700 font-semibold max-sm:m-0'>Email</label>
-          <input type='text' readOnly disabled className='p-2 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl ' value={`${user?.user?.email}`} />
+          <input type='text' readOnly disabled className='p-2 border flex m-auto rounded-lg my-2 w-96 border-blue-500 shadow-2xl max-sm:w-70' value={`${user?.user?.email}`} />
           <label className='ml-45 text-cyan-700 font-semibold max-sm:m-0'>Age</label>
-          <input type='text' readOnly disabled className='p-2 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl ' value={`${userData?.age}`} />
+          <input type='text' readOnly disabled className='p-2 border flex m-auto rounded-lg my-2 w-96 border-blue-500 shadow-2xl max-sm:w-70' value={`${userData?.age}`} />
           <label className='ml-45 text-cyan-700 font-semibold max-sm:m-0'>Gender</label>
-          <input type='text' readOnly disabled className='p-2 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl ' value={`${userData?.gender}`} />
+          <input type='text' readOnly disabled className='p-2 border flex m-auto rounded-lg my-2 w-96 border-blue-500 shadow-2xl max-sm:w-70' value={`${userData?.gender}`} />
           <label className='ml-45 text-cyan-700 font-semibold max-sm:m-0'>Marital Status</label>
-          <input type='text' readOnly disabled className='p-2 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl ' value={`${userData?.marital_status}`} />
+          <input type='text' readOnly disabled className='p-2 border flex m-auto rounded-lg my-2 w-96 border-blue-500 shadow-2xl max-sm:w-70' value={`${userData?.marital_status}`} />
           <label className='ml-45 text-cyan-700 font-semibold max-sm:m-0'>Date of birth</label>
-          <input type='text' readOnly disabled className='p-2 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl ' value={`${userData?.dob}`} />
+          <input type='text' readOnly disabled className='p-2 border flex m-auto rounded-lg my-2 w-96 border-blue-500 shadow-2xl max-sm:w-70' value={`${userData?.dob}`} />
           <label className='ml-45 text-cyan-700 font-semibold max-sm:m-0'>Category</label>
-          <input type='text' readOnly disabled className='p-2 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl ' value={`${userData?.category}`} />
+          <input type='text' readOnly disabled className='p-2 border flex m-auto rounded-lg my-2 w-96 border-blue-500 shadow-2xl max-sm:w-70' value={`${userData?.category}`} />
           <label className='ml-45 text-cyan-700 font-semibold max-sm:m-0'>Phone</label>
-          <input type='text' readOnly disabled className='p-2 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl ' value={`${userData?.phone}`} />
+          <input type='text' readOnly disabled className='p-2 border flex m-auto rounded-lg my-2 w-96 border-blue-500 shadow-2xl max-sm:w-70' value={`${userData?.phone}`} />
           <label className='ml-45 text-cyan-700 font-semibold max-sm:m-0'>Minority</label>
-          <input type='text' readOnly disabled className='p-2 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl ' value={`${userData?.minority}`} />
+          <input type='text' readOnly disabled className='p-2 border flex m-auto rounded-lg my-2 w-96 border-blue-500 shadow-2xl max-sm:w-70' value={`${userData?.minority}`} />
           <label className='ml-45 text-cyan-700 font-semibold max-sm:m-0'>Income</label>
-          <input type='text' readOnly disabled className='p-2 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl ' value={`${userData?.income}`} />
+          <input type='text' readOnly disabled className='p-2 border flex m-auto rounded-lg my-2 w-96 border-blue-500 shadow-2xl max-sm:w-70' value={`${userData?.income}`} />
           <label className='ml-45 text-cyan-700 font-semibold max-sm:m-0'>Qualification</label>
-          <input type='text' readOnly disabled className='p-2 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl ' value={`${userData?.qualification}`} />
+          <input type='text' readOnly disabled className='p-2 border flex m-auto rounded-lg my-2 w-96 border-blue-500 shadow-2xl max-sm:w-70' value={`${userData?.qualification}`} />
           <label className='ml-45 text-cyan-700 font-semibold max-sm:m-0'>Occupation Status</label>
-          <input type='text' readOnly disabled className='p-2 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl ' value={`${userData?.occupation_status}`} />
+          <input type='text' readOnly disabled className='p-2 border flex m-auto rounded-lg my-2 w-96 border-blue-500 shadow-2xl max-sm:w-70' value={`${userData?.occupation_status}`} />
           <label className='ml-45 text-cyan-700 font-semibold max-sm:m-0'>Address</label>
 
-          <textarea disabled className='p-2 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl ' value={`${userData?.street} ${userData?.city} ${userData?.landmark} ${userData?.pincode} ${userData?.district} ${userData?.state}`} />
+          <textarea disabled className='p-2 border flex m-auto rounded-lg my-2 w-96 border-blue-500 shadow-2xl max-sm:w-70 ' value={`${userData?.street} ${userData?.city} ${userData?.landmark} ${userData?.pincode} ${userData?.district} ${userData?.state}`} />
 
         </div>
         <button className='p-2 bg-blue-500 rounded-lg m-auto flex mt-5 hover:text-white '><Link to={'/edit-profile'} >Edit Profile</Link></button>

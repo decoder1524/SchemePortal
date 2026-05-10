@@ -35,7 +35,14 @@ const Dashboard = () => {
       try {
         const res = await getUsers();
         // console.log(res?.data);
-        setUsers(res?.data?.users)
+        if(user?.user?.role === 'admin'){
+          setUsers(res?.data?.users.filter(user => user.role === 'citizen' || user.role === 'officer'))
+        }
+        
+        if(user?.user?.role === 'officer'){
+          setUsers(res?.data?.users.filter(user => user.role === 'citizen'))
+        }
+        
         // console.log(users);
 
       }
@@ -152,7 +159,7 @@ const Dashboard = () => {
         </div>
         <div className="box border w-60 h-40 mt-5 rounded-lg shadow-2xl border-white ">
           <p className='text-2xl text-center mt-5 text-blue-500 font-semibold'>Ineligible Users</p>
-          <p className='text-2xl text-center mt-5 text-blue-500 font-semibold'>{users.length - eligibleUsers.length}</p>
+          <p className='text-2xl text-center mt-5 text-blue-500 font-semibold'>{Math.max(0,(users.length - eligibleUsers.length))}</p>
         </div>
       </div>
       <div className='  m-5 min-h-90  rounded-2xl'>

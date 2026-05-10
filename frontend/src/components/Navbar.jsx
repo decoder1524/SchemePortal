@@ -21,7 +21,7 @@ const Navbar = () => {
   }
   const [open, setOpen] = useState(false);
   return (
-    <div className='bg-blue-100 shadow-2xl mt-2 '>
+    <div className='bg-blue-100 shadow-2xl mt-2  w-full'>
       <nav>
         <ul className='flex p-4 gap-3'>
           <li className='font-bold font-serif text-2xl hover:text-white '><Link to={'/'}>myScheme</Link></li>
@@ -64,7 +64,7 @@ const Navbar = () => {
             )}
 
           </div>
-          <div className='ml-auto text-right sm:hidden'>
+          <div className='ml-auto text-right sm:hidden max-sm:w-full'>
             <button onClick={() => setOpen(!open)} className='text-2xl hover:text-white inline '>&#8801;</button>
             {open && (
               <div className=' space-y-2 '>
