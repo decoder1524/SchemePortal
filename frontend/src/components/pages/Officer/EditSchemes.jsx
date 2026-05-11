@@ -246,7 +246,7 @@ const EditSchemes = () => {
               onChange={(e) => {
                 setScheme({ ...scheme, applyLink: e.target.value })
               }} placeholder='Apply Link' required />
-            <button type="submit" className='bg-blue-600 p-2 rounded mt-3 '>Update Scheme</button>
+            <button type="submit" className='bg-blue-600 p-2 rounded mt-3 cursor-pointer'>Update Scheme</button>
           </div>
         </form>
       </div>

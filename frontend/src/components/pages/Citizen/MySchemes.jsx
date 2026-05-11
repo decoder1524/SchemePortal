@@ -7,13 +7,13 @@ const MySchemes = () => {
   const user = JSON.parse(localStorage.getItem("user"))
   const [schemes, setSchemes] = useState([]);
   const userId = user?.user?.userId
-  console.log(user?.user?.userId);
+  // console.log(user?.user?.userId);
   const navigate = useNavigate();
   useEffect(() => {
     (async () => {
       try {
         const res = await getEligibleScheme(userId);
-        console.log(res?.data);
+        // console.log(res?.data);
         const schemeids = res?.data?.schemeids;
         try {
           const getScheme = await getSchemes();
@@ -21,7 +21,7 @@ const MySchemes = () => {
           const schemesFetched = await getScheme?.data?.scheme?.filter(scheme =>
             schemeids?.includes(scheme.schemeid)
           );
-          console.log(schemesFetched);
+          // console.log(schemesFetched);
           setSchemes(schemesFetched)
 
         } catch (error) {
@@ -36,23 +36,11 @@ const MySchemes = () => {
     })()
   }, [schemes])
 
-  const handleDelete = async (schemeid) => {
-    try {
-      const res = await deleteScheme(schemeid);
-      console.log(res.data);
-      setSchemes(res?.data?.scheme);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleEdit = (schemeid) => {
-    navigate(`/edit-scheme/${schemeid}`)
-  };
   const handleGetScheme = (schemeid) => {
-    console.log(schemeid);
+    // console.log(schemeid);
     navigate(`/get-scheme/${schemeid}`)
   };
+
 
   return (
    <>
