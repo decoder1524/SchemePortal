@@ -49,6 +49,7 @@ export const sendNewschemeMail = async (req,res)=>{
         sendData.push({userId:e.userId,email:e.email,name: e.role,scheme:e.eligible_scheme.map(scheme => scheme.schemeName)})
         
     });  
+    
     try {
          const info = async (data)=>{
             return  await transporter.sendMail({
@@ -85,6 +86,8 @@ export const sendNewschemeMail = async (req,res)=>{
        const response = await Promise.all(
         sendData.map(data=> info(data))
        )
+
+       
        const store =  [];
        await Promise.all(
            response.map((data,index)=>{
@@ -94,12 +97,14 @@ export const sendNewschemeMail = async (req,res)=>{
                     notified : data?.accepted?.length > 0 ? true:false
                 }
                 
-                const res =  new Notification(notificationData );
+                const res =  new Notification(notificationData);
                 res.save();
                 store.push(res);
+                console.log(res);
+                
             })
         )
-        console.log(store);
+        // console.log (store);
         return res.status(200).json({
             success:true,
             message:"sent",

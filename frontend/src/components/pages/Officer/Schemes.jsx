@@ -42,7 +42,7 @@ const Schemes = ({ schemes, setSchemes }) => {
                 {schemes?.map((scheme,index) => (
                   <tr>
                   <td className='border'>
-                    <button>{index}</button>
+                    <button>{index +1}</button>
                   </td>
                   <td className='border'>
                     <button className='cursor-pointer' onClick={()=>{handleGetScheme(scheme.schemeid)}}>{scheme.scheme_name}</button>

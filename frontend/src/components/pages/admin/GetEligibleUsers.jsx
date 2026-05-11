@@ -3,12 +3,12 @@ import { getEligibleUsers, getNotifications, sendNewSchemeMail } from '../../../
 
 const GetEligibleUsers = ({eligibleUsers}) => {
     const [loading,setLoading] = useState(false);
-    const [send, setSend] = useState([]);
+    const [send, setSend] = useState([]); 
     const handleNotify = async () => {
         try {
             setLoading(true)
             const Notify = await sendNewSchemeMail(eligibleUsers);
-            console.log(Notify.data);
+            console.log(Notify?.data);
             setLoading(false)
         } catch (error) {
             console.log(error);
@@ -54,12 +54,12 @@ const GetEligibleUsers = ({eligibleUsers}) => {
                                     {eligible?.eligible_scheme?.map(scheme => 
                                     <p key={scheme.schemeid}>{scheme.schemeName}</p>)}
                                 </td>
-                                    {loading ? <p className='p-1'>{'Sending...'}</p>:
                                 <td className='border p-1 hover:bg-gray-400 '>
+                                  {loading ? <p className='p-1'>{'Sending...'}</p>:
                                     <p className='text-green-600'>
-                                        {send[index]?.notified ? "sent"  : <p className='text-red-700'> Not Sent</p>}
-                                    </p>
-                                </td>}
+                                        {send[index]?.notified ? "sent"  : <span className='text-red-700'> Not Sent</span>}
+                                    </p>}
+                                </td>
                             </tr>
                         </tbody>
                     })}

@@ -35,13 +35,13 @@ const Dashboard = () => {
       try {
         const res = await getUsers();
         // console.log(res?.data);
-        if(user?.user?.role === 'admin'){
-          setUsers(res?.data?.users.filter(user => user.role === 'citizen' || user.role === 'officer'))
-        }
+        // if(user?.user?.role === 'admin'){
+        //   setUsers(res?.data?.users.filter(user => user.role === 'citizen' || user.role === 'officer'))
+        // }
         
-        if(user?.user?.role === 'officer'){
+        // if(user?.user?.role === 'officer'){
           setUsers(res?.data?.users.filter(user => user.role === 'citizen'))
-        }
+        // }
         
         // console.log(users);
 
@@ -51,7 +51,7 @@ const Dashboard = () => {
       }
       try {
         const res = await getSchemes();
-        // console.log(res?.data?.scheme);
+        console.log(res?.data?.scheme);
         setSchemes(res?.data?.scheme);
 
         try {
@@ -60,7 +60,7 @@ const Dashboard = () => {
           const profileIds = profiles?.data?.userProfileIds;
           try {
             const checkEligible = await checkEligibleScheme(profileIds)
-            // console.log(checkEligible?.data);
+            console.log(checkEligible?.data);
             const allResult = checkEligible?.data?.allResult;
             setAllResults(allResult);
             try {
@@ -181,8 +181,8 @@ const Dashboard = () => {
         <div className='  m-5 p-5 shadow-blue-700'>
           {toggleAddUser &&  <AddUser setRefresh={setRefresh}/>}
           {toggleGetUser && <GetUsers users={users} setUsers={setUsers} allResults = {allResults} />}
-          {toggleGetSchemes && <Schemes schemes={schemes} setSchemes={setSchemes} setUsers={setUsers} />}
-          {toggleAddScheme &&<AddSchemes setSchemes = {setSchemes} />}
+          {toggleGetSchemes && <Schemes schemes={schemes} setSchemes={setSchemes} setRefresh ={setRefresh} setUsers={setUsers} />}
+          {toggleAddScheme &&<AddSchemes  setRefresh = {setRefresh} />}
           {toggleGetEligibleUser && <GetEligibleUsers eligibleUsers = {eligibleUsers}/>}
           {toggleEditUser && <EditUser/>}
         </div>

@@ -3,13 +3,14 @@ import { addScheme } from '../../../api/userApi';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
-const AddSchemes = () => {
+const AddSchemes = ({setRefresh}) => {
   const navigate = useNavigate();
   const requiredDocs = ["Aadhar Card", "Voter ID", "Driving License", "Passport", "Pan Card", "High School", "Higher Secondary", "Graduation", "Post Graduation", "Domicile", "Income", "Caste", "Disability", "Marriage"];
       const categories = ["General", "OBC", "ST", "SC"];
       const genderData = ["Male","Female",'Other'];
       const maritalStatus = ["Married","Unmarried"];
   const handleScheme = async (event) => {
+     setRefresh(true)
     event.preventDefault();
     const formData = new FormData(event.target);
     const docs = formData.getAll("documents");
@@ -32,6 +33,7 @@ const AddSchemes = () => {
       if (res.status === 200 || res.status === 201) {
         toast.success(res?.data?.message)
         event.target.reset(); 
+        setRefresh(false)
       }
 
     }
