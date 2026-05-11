@@ -10,7 +10,7 @@ const GetUsers = ({ users, setUsers, allResults }) => {
     const [showModal, setShowModal] = useState(false);
     const [showEditModal, setShowEditModal] = useState(false);
     const [search, setSearch] = useState("");
-    const [allUsers,setAllUsers] = useState(users);
+    const [allUsers, setAllUsers] = useState(users);
     const navigate = useNavigate();
     const handleProfile = async (userId) => {
         try {
@@ -28,7 +28,9 @@ const GetUsers = ({ users, setUsers, allResults }) => {
             if (showProfile.userId === userId) {
                 const del = await deleteProfile(userId)
             }
-            setUsers(users?.filter(user => user.userId !== userId));
+            const updatedUser = allUsers?.filter(user => user.userId !== userId)
+            setUsers(updatedUser);
+            setAllUsers(updatedUser);
             toast.success(userDelete?.data?.message);
         } catch (error) {
             console.log(error);
@@ -38,17 +40,17 @@ const GetUsers = ({ users, setUsers, allResults }) => {
     const handleUpdate = (userId) => {
         navigate(`/edit-user/${userId}`)
     }
-const handleChange = (e) => {
-    const value = e.target.value;
-    if (value === 'all') {
-        setUsers(allUsers);
-        return;
-    }
-    const filteredUsers = allUsers.filter(
-        user => user.role.toLowerCase() === value.toLowerCase()
-    );
-    setUsers(filteredUsers);
-};
+    const handleChange = (e) => {
+        const value = e.target.value;
+        if (value === 'all') {
+            setUsers(allUsers);
+            return;
+        }
+        const filteredUsers = allUsers.filter(
+            user => user.role.toLowerCase() === value.toLowerCase()
+        );
+        setUsers(filteredUsers);
+    };
 
     return (
         <>
@@ -86,18 +88,18 @@ const handleChange = (e) => {
                                     <td className='border border-gray-700 p-2 hover:bg-gray-500 font-bold'>{allResults
                                         ?.find(user => user.userId === item.userId)
                                         ?.eligibleScheme
-                                        ?.map((scheme,index) => <div key={index}>{index+1}.  {scheme.schemeName} </div> )}</td> : <td className='border border-gray-700 p-2 hover:bg-gray-500 '>Not Eligible</td>}
+                                        ?.map((scheme, index) => <div key={index}>{index + 1}.  {scheme.schemeName} </div>)}</td> : <td className='border border-gray-700 p-2 hover:bg-gray-500 '>Not Eligible</td>}
                                 {allResults?.find(user => user.userId === item.userId) ? allResults
                                     ?.find(user => user.userId === item.userId)?.notEligibleScheme.length === 0 ? <td className='border border-gray-700 p-2 hover:bg-gray-500 '>No Schemes</td> :
                                     <td className='border border-gray-700 p-2 hover:bg-gray-500 font-bold'>{allResults
                                         ?.find(user => user.userId === item.userId)
                                         ?.notEligibleScheme
-                                        ?.map((scheme,index) => <div key={index}>{index+1}. {scheme.schemeName}</div> )}</td> : <td className='border border-gray-700 p-2 hover:bg-gray-500 '>Profile Not Found</td>}
+                                        ?.map((scheme, index) => <div key={index}>{index + 1}. {scheme.schemeName}</div>)}</td> : <td className='border border-gray-700 p-2 hover:bg-gray-500 '>Profile Not Found</td>}
                                 {allResults?.find(user => user.userId === item.userId) ?
                                     <td className='border border-gray-700 p-2 hover:bg-gray-500 font-bold'>{allResults
                                         ?.find(user => user.userId === item.userId)
                                         ?.notEligibleScheme
-                                        ?.map(reasons => reasons.reasons.map((reason,index)=> <div key={index}>{index+1}. {reason}</div>))}</td> : <td className='border border-gray-700 p-2 hover:bg-gray-500 '>Profile Not Found</td>}
+                                        ?.map(reasons => reasons.reasons.map((reason, index) => <div key={index}>{index + 1}. {reason}</div>))}</td> : <td className='border border-gray-700 p-2 hover:bg-gray-500 '>Profile Not Found</td>}
 
                                 <td className='border border-gray-700 p-2  flex justify-center gap-5    '>
                                     <button className='cursor-pointer bg-blue-700 p-2 rounded hover:bg-blue-400' onClick={() => {
@@ -125,8 +127,8 @@ const handleChange = (e) => {
             </div>
             {showModal && (
                 Object.keys(showProfile).length > 0 ? (
-                    <div className='fixed top-0 left-0 w-screen h-screen bg-black/90 flex justify-center overflow-y-auto'>
-                        <div className="card bg-white w-auto h-auto m-auto rounded-lg shadow-2xl p-3  opacity-100">
+                    <div className='fixed top-0 left-0 w-screen h-screen bg-black/90 flex justify-center'>
+                        <div className="card bg-white  m-auto rounded-lg shadow-2xl p-3  opacity-100  ">
                             <div className="flex justify-between p-3 text-xl">
                                 <div className='title'>Profile</div>
                                 <div className="close-btn cursor-pointer" onClick={() => {
@@ -135,46 +137,49 @@ const handleChange = (e) => {
                                 }
                                 }>X</div>
                             </div>
-                            <div className="profile-card container boder flex justify-center max-h-full gap-3 flex-col">
+                            <div className="profile-card container flex justify-center max-h-full gap-3 flex-col">
                                 <img src={
                                     showProfile?.profilephoto
                                         ? `http://localhost:3001/uploads/${showProfile.profilephoto}`
                                         : "https://imgs.search.brave.com/3QDBvTILiulxQWmBi7gx3QB8j7NtOpGgAMold8LVAoc/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMjE5/MjIyMjExMi92ZWN0/b3IvcHJvZmlsZS1h/dmF0YXItb2YtYmVh/cmQtbWFuLXdlYXJp/bmctc3VuZ2xhc3Nl/cy5qcGc_cz02MTJ4/NjEyJnc9MCZrPTIw/JmM9ODJldmhBR0hK/VHJhNmtqbFdORHdk/b21xR3VtVWpKb3Fx/dUdKbWJZQ0M1QT0"
                                 } className=' h-15 rounded-4xl m-auto' alt="Profile Photo" />
-                                <div className="container ">
-                                    <label className=' text-cyan-700 font-semibold '>Name</label>
-                                    <input type='text' readOnly disabled className='p-1 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl ' value={`${showProfile?.firstName} ${showProfile?.lastName}`} />
-                                    <label className=' text-cyan-700 font-semibold '>Age</label>
+                                <div className="container flex gap-5  max-sm:flex-col">
+                                    <div>
+                                        <label className=' text-cyan-700 font-semibold '>Name</label>
+                                        <input type='text' readOnly disabled className='p-1 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl ' value={`${showProfile?.firstName} ${showProfile?.lastName}`} />
 
-                                    <input type='text' readOnly disabled className='p-1 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl ' value={`${showProfile?.age}`} />
-                                    <label className=' text-cyan-700 font-semibold '>Gender</label>
+                                        <label className=' text-cyan-700 font-semibold '>Gender</label>
+                                        <input type='text' readOnly disabled className='p-1 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl ' value={`${showProfile?.gender}`} />
+                                        <label className=' text-cyan-700 font-semibold '>Category</label>
 
-                                    <input type='text' readOnly disabled className='p-1 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl ' value={`${showProfile?.gender}`} />
-                                    <label className=' text-cyan-700 font-semibold '>Date of birth</label>
+                                        <input type='text' readOnly disabled className='p-1 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl ' value={`${showProfile?.category}`} />
 
-                                    <input type='text' readOnly disabled className='p-1 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl ' value={`${showProfile?.dob}`} />
-                                    <label className=' text-cyan-700 font-semibold '>Category</label>
+                                        <label className=' text-cyan-700 font-semibold '>Minority</label>
+                                        <input type='text' readOnly disabled className='p-1 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl ' value={`${showProfile?.minority}`} />
+                                        <label className=' text-cyan-700 font-semibold '>Qualification</label>
+                                        <input type='text' readOnly disabled className='p-1 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl ' value={`${showProfile?.qualification}`} />
+                                    </div>
+                                    <div>
+                                        <label className=' text-cyan-700 font-semibold '>Age</label>
+                                        <input type='text' readOnly disabled className='p-1 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl ' value={`${showProfile?.age}`} />
+                                        <label className=' text-cyan-700 font-semibold '>Date of birth</label>
+                                        <input type='text' readOnly disabled className='p-1 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl ' value={`${showProfile?.dob}`} />
 
-                                    <input type='text' readOnly disabled className='p-1 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl ' value={`${showProfile?.category}`} />
-                                    <label className=' text-cyan-700 font-semibold '>Phone</label>
+                                        <label className=' text-cyan-700 font-semibold '>Phone</label>
+                                        <input type='text' readOnly disabled className='p-1 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl ' value={`${showProfile?.phone}`} />
+                                        <label className=' text-cyan-700 font-semibold '>Income</label>
+                                        <input type='text' readOnly disabled className='p-1 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl ' value={`${showProfile?.income}`} />
+                                        <label className=' text-cyan-700 font-semibold '>Occupation</label>
+                                        <input type='text' readOnly disabled className='p-1 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl ' value={`${showProfile?.occupation_status}`} />
+                                    </div>
 
-                                    <input type='text' readOnly disabled className='p-1 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl ' value={`${showProfile?.phone}`} />
-                                    <label className=' text-cyan-700 font-semibold '>Minority</label>
 
-                                    <input type='text' readOnly disabled className='p-1 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl ' value={`${showProfile?.minority}`} />
-                                    <label className=' text-cyan-700 font-semibold '>Income</label>
 
-                                    <input type='text' readOnly disabled className='p-1 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl ' value={`${showProfile?.income}`} />
-                                    <label className=' text-cyan-700 font-semibold '>Qualification</label>
 
-                                    <input type='text' readOnly disabled className='p-1 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl ' value={`${showProfile?.qualification}`} />
-                                    <label className=' text-cyan-700 font-semibold '>Occupation</label>
 
-                                    <input type='text' readOnly disabled className='p-1 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl ' value={`${showProfile?.occupation_status}`} />
-                                    <label className=' text-cyan-700 font-semibold '>Address</label>
-
-                                    <textarea disabled className='p-1 border flex m-auto rounded-lg my-2 min-w-96 border-blue-500 shadow-2xl ' value={`${showProfile?.street} ${showProfile?.city} ${showProfile?.landmark} ${showProfile?.pincode} ${showProfile?.district} ${showProfile?.state}`} />
                                 </div>
+                                    <label className=' text-cyan-700 font-semibold'>Address</label>
+                                    <textarea disabled className='p-2 border flex  rounded-lg border-blue-500 shadow-2xl resize-none w-full' value={`${showProfile?.street} ${showProfile?.city} ${showProfile?.landmark} ${showProfile?.pincode} ${showProfile?.district} ${showProfile?.state}`} />
                             </div>
                         </div>
                     </div>) :
