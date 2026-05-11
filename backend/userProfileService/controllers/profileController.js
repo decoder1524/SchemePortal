@@ -9,7 +9,7 @@ export const createProfile = async (req, res) => {
 
         const { firstName, lastName, age, phone, gender,marital_status, dob, category, minority, income, street, city, district, state, pincode, landmark, qualification, occupation_status } = req.body;
         const userId = req.params.userId;
-        const profilePhoto = req?.file?.filename;
+        const profilePhoto = req?.file?.filename || null;
         console.log('Profile data:', { userId, profilePhoto, firstName, lastName, age, phone, gender, marital_status, dob, category, minority, income, street, city, district, state, pincode, landmark, qualification, occupation_status });
         // Validate required fields
         if (!profilePhoto || !firstName || !lastName || !age || !phone || !gender || !marital_status || !dob || !category || !minority || !income || !street || !city || !district || !state || !pincode || !qualification || !occupation_status) {

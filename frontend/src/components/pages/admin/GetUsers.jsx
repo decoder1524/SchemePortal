@@ -10,6 +10,7 @@ const GetUsers = ({ users, setUsers, allResults }) => {
     const [showModal, setShowModal] = useState(false);
     const [showEditModal, setShowEditModal] = useState(false);
     const [search, setSearch] = useState("");
+    const [allUsers,setAllUsers] = useState(users);
     const navigate = useNavigate();
     const handleProfile = async (userId) => {
         try {
@@ -37,12 +38,27 @@ const GetUsers = ({ users, setUsers, allResults }) => {
     const handleUpdate = (userId) => {
         navigate(`/edit-user/${userId}`)
     }
-
+const handleChange = (e) => {
+    const value = e.target.value;
+    if (value === 'all') {
+        setUsers(allUsers);
+        return;
+    }
+    const filteredUsers = allUsers.filter(
+        user => user.role.toLowerCase() === value.toLowerCase()
+    );
+    setUsers(filteredUsers);
+};
 
     return (
         <>
             <div className='container w-full h-10 flex '>
                 <input type="text" className='p-2 min-w-100 m-auto border rounded border-blue-300' placeholder='Search user by Email' value={search} onChange={(e) => setSearch(e.target.value)} />
+                <select name="filter" id="filter" className='border border-blue-500 rounded w-20' onChange={handleChange}>
+                    <option value="all">All</option>
+                    <option value="admin">Admin</option>
+                    <option value="officer">Officer</option>
+                </select>
             </div>
             <div className='overflow-hidden overflow-x-auto rounded-2xl border-2 border-gray-700 mt-10' >
                 <table className='bg-white  m-auto  sm:w-full'>

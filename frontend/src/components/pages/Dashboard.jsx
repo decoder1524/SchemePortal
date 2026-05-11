@@ -35,13 +35,7 @@ const Dashboard = () => {
       try {
         const res = await getUsers();
         // console.log(res?.data);
-        // if(user?.user?.role === 'admin'){
-        //   setUsers(res?.data?.users.filter(user => user.role === 'citizen' || user.role === 'officer'))
-        // }
-        
-        // if(user?.user?.role === 'officer'){
-          setUsers(res?.data?.users.filter(user => user.role === 'citizen'))
-        // }
+          setUsers(res?.data?.users)
         
         // console.log(users);
 

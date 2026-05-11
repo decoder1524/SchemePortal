@@ -8,5 +8,14 @@ const pool = mysql.createPool({
     password: process.env.DB_PASSWORD,
     database:process.env.DB_NAME || 'schemesdb'
 })
+ pool.getConnection((error,connection)=>{
+    if(error){
+      console.log(`Database Connection Failed : ${error}`);
+    }
+    console.log(`schemesdb Connected Successfully`);
+    connection.release()
+    
+  })
+
 
 export default pool.promise();
