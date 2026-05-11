@@ -34,10 +34,10 @@ const Signup = () => {
         }
       }
     }).catch((err) => {
-      console.log(err.response.data);
+      console.log(err?.response?.data?.message);
 
       if (err?.response?.status === 409) {
-        const message = err?.response?.data?.message;
+        const message = err?.response?.data?.message
         toast.error(message)
         return;
       }
@@ -47,7 +47,7 @@ const Signup = () => {
           toast.error(element)
         });
       } else {
-        toast.error(err?.response?.data?.message || "Registration failed")
+        toast.error(err?.response?.data?.message|| "Registration failed")
       }
 
     })

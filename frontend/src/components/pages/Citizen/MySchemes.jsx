@@ -34,7 +34,7 @@ const MySchemes = () => {
         console.log(error);
       }
     })()
-  }, [])
+  }, [schemes])
 
   const handleDelete = async (schemeid) => {
     try {
@@ -74,7 +74,7 @@ const MySchemes = () => {
                     <button>{index+1}</button>
                   </td>
                   <td className='border p-2'>
-                    <button className='cursor-pointer' onClick={()=>{handleGetScheme(scheme.schemeid)}}>{scheme.scheme_name}</button>
+                    <button className='cursor-pointer font-bold text-2xl text-blue-500' onClick={()=>{handleGetScheme(scheme.schemeid)}}>{scheme.scheme_name}</button>
                   </td>
                   <td className='border'>
                     <a href={`http://${scheme.applyLink}`} className='m-3 border  w-20 rounded bg-green-400 p-1   hover:bg-green-500 cursor-pointer'>Apply</a>
