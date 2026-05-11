@@ -80,38 +80,38 @@ const GetUsers = ({ users, setUsers, allResults }) => {
                         {users && users.length > 0 ? users?.filter(user => user?.email.toLowerCase()?.includes(search.toLowerCase()))?.map((item) => (
                             <tr key={item.userId}>
 
-                                <td className='border border-gray-700 p-2 hover:bg-gray-500 '>{item.userId}</td>
-                                <td className='border border-gray-700 p-2 hover:bg-gray-500 '>{item.email}</td>
-                                <td className='border border-gray-700 p-2 hover:bg-gray-500 '>{item.role}</td>
+                                <td className='border border-gray-700 p-2 hover:bg-gray-300 '>{item.userId}</td>
+                                <td className='border border-gray-700 p-2 hover:bg-gray-300 '>{item.email}</td>
+                                <td className='border border-gray-700 p-2 hover:bg-gray-300 '>{item.role}</td>
                                 {allResults?.find(user => user.userId === item.userId) ? allResults
-                                    ?.find(user => user.userId === item.userId)?.eligibleScheme.length === 0 ? <td className='border border-gray-700 p-2 hover:bg-gray-500 '>Not Eligible</td> :
-                                    <td className='border border-gray-700 p-2 hover:bg-gray-500 font-bold'>{allResults
+                                    ?.find(user => user.userId === item.userId)?.eligibleScheme.length === 0 ? <td className='border border-gray-700 p-2 hover:bg-gray-300 '>Not Eligible</td> :
+                                    <td className='border border-gray-700 p-2 hover:bg-gray-300 font-bold'>{allResults
                                         ?.find(user => user.userId === item.userId)
                                         ?.eligibleScheme
-                                        ?.map((scheme, index) => <div key={index}>{index + 1}.  {scheme.schemeName} </div>)}</td> : <td className='border border-gray-700 p-2 hover:bg-gray-500 '>Not Eligible</td>}
+                                        ?.map((scheme, index) => <div key={index}>{index + 1}.  {scheme.schemeName} </div>)}</td> : <td className='border border-gray-700 p-2 hover:bg-gray-300 '>Not Eligible</td>}
                                 {allResults?.find(user => user.userId === item.userId) ? allResults
-                                    ?.find(user => user.userId === item.userId)?.notEligibleScheme.length === 0 ? <td className='border border-gray-700 p-2 hover:bg-gray-500 '>No Schemes</td> :
-                                    <td className='border border-gray-700 p-2 hover:bg-gray-500 font-bold'>{allResults
+                                    ?.find(user => user.userId === item.userId)?.notEligibleScheme.length === 0 ? <td className='border border-gray-700 p-2 hover:bg-gray-300 '>No Schemes</td> :
+                                    <td className='border border-gray-700 p-2 hover:bg-gray-300 font-bold'>{allResults
                                         ?.find(user => user.userId === item.userId)
                                         ?.notEligibleScheme
-                                        ?.map((scheme, index) => <div key={index}>{index + 1}. {scheme.schemeName}</div>)}</td> : <td className='border border-gray-700 p-2 hover:bg-gray-500 '>Profile Not Found</td>}
+                                        ?.map((scheme, index) => <div key={index}>{index + 1}. {scheme.schemeName}</div>)}</td> : <td className='border border-gray-700 p-2 hover:bg-gray-300 '>Profile Not Found</td>}
                                 {allResults?.find(user => user.userId === item.userId) ?
-                                    <td className='border border-gray-700 p-2 hover:bg-gray-500 font-bold'>{allResults
+                                    <td className='border border-gray-700 p-2 hover:bg-gray-300 font-bold'>{allResults
                                         ?.find(user => user.userId === item.userId)
                                         ?.notEligibleScheme
-                                        ?.map(reasons => reasons.reasons.map((reason, index) => <div key={index}>{index + 1}. {reason}</div>))}</td> : <td className='border border-gray-700 p-2 hover:bg-gray-500 '>Profile Not Found</td>}
+                                        ?.map(reasons => reasons.reasons.map((reason, index) => <div key={index}>{index + 1}. {reason}</div>))}</td> : <td className='border border-gray-700 p-2 hover:bg-gray-300 '>Profile Not Found</td>}
 
-                                <td className='border border-gray-700 p-2  flex justify-center gap-5    '>
-                                    <button className='cursor-pointer bg-blue-700 p-2 rounded hover:bg-blue-400' onClick={() => {
+                                <td className='border border-gray-700 hover:bg-gray-300 h-50 p-2  flex justify-center gap-5    '>
+                                    <button className='cursor-pointer h-10 justify-center m-auto bg-blue-700 p-2 rounded hover:bg-blue-400 ' onClick={() => {
                                         handleProfile(item.userId)
                                         setShowModal(prev => !prev)
                                     }}>View Profile</button>
                                     {user?.user?.role === 'admin' && <>
-                                        <button className='cursor-pointer bg-blue-700 p-2 rounded hover:bg-blue-400' onClick={() => {
+                                        <button className='cursor-pointer bg-blue-700 p-2 rounded hover:bg-blue-400 h-10 justify-center m-auto ' onClick={() => {
                                             setShowEditModal(prev => !prev)
                                             handleUpdate(item.userId)
                                         }}>Edit</button>
-                                        <button className='cursor-pointer bg-red-500 p-2 rounded hover:bg-red-400' onClick={() => { handleDelete(item.userId) }}>Delete</button>
+                                        <button className='cursor-pointer bg-red-500 p-2 rounded hover:bg-red-400 h-10 justify-center m-auto ' onClick={() => { handleDelete(item.userId) }}>Delete</button>
                                     </>}
                                 </td>
                             </tr>
