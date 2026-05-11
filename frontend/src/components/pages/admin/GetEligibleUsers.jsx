@@ -33,7 +33,7 @@ const GetEligibleUsers = ({eligibleUsers}) => {
     return (
         <>
             <div className='border p-4 border-white shadow-2xl '>
-                <button className='p-2 bg-blue-500 rounded flex ml-auto disabled:bg-blue-300 ' disabled={loading} onClick={handleNotify}>NotifyAll</button>
+                <button className='p-2 bg-blue-500 rounded flex ml-auto disabled:bg-blue-300 cursor-pointer' disabled={loading} onClick={handleNotify}>NotifyAll</button>
                 <table className='border w-full '>
                     <thead className='border'>
                         <tr className='border'>

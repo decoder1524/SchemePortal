@@ -35,7 +35,7 @@ const AddUser =  ({setRefresh}) => {
             <option value="citizen">Citizen</option>
             <option value="officer">Department Officer</option>
         </select>
-        <button type="submit" className='bg-blue-600 p-2 rounded '>Add User</button>
+        <button type="submit" className='bg-blue-600 p-2 rounded cursor-pointer'>Add User</button>
       </form>
     </div>
   )

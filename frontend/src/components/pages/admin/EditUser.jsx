@@ -51,7 +51,7 @@ const EditUser =  () => {
             <option value="citizen">Citizen</option>
             <option value="officer">Department Officer</option>
         </select>
-        <button type="submit" className='bg-blue-600 p-2 rounded '>Edit User</button>
+        <button type="submit" className='bg-blue-600 p-2 rounded cursor-pointer'>Edit User</button>
       </form>
     </div>
   )

@@ -14,7 +14,7 @@ const Dashboard = () => {
   const user = JSON.parse(localStorage.getItem("user"))
   const [toggleAddUser, setToggleAddUser] = useState(false);
   const [toggleGetUser, setToggleGetUser] = useState(false);
-  const [toggleEditUser, setToggleEditUser] = useState(false);
+
   const [toggleGetEligibleUser, setToggleGetEligibleUser] = useState(false);
   const [toggleAddScheme, setToggleAddScheme] = useState(false);
   const [toggleGetSchemes, setToggleGetSchemes] = useState(false);
@@ -104,18 +104,7 @@ const Dashboard = () => {
     setToggleGetSchemes(false)
     setRefresh(false)
   }
-  const handleEditUser = () => {
-    setToggleEditUser(true)
-    setRefresh(true)
-    setToggleGetUser(false)
-    setToggleAddUser(false)
-    setToggleGetEligibleUser(false)
-    setToggleAddScheme(false)
-    setToggleGetSchemes(false)
-    setRefresh(false)
-  }
   const handleEligibleUser = () => {
-
     setToggleGetEligibleUser(true)
     setToggleAddUser(false)
     setToggleGetUser(false)
@@ -159,18 +148,18 @@ const Dashboard = () => {
       <div className='  m-5 min-h-90  rounded-2xl'>
         {user?.user?.role === 'admin' && 
          <div className=' mt-10 flex gap-2 pl-2 justify-around'>
-          <button className='rounded p-2 bg-blue-500 w-60' onClick={handleAddUser}>Add User</button>
-          <button className='rounded p-2 bg-blue-500 w-60' onClick={handleGetUser}>Get Users</button>
-          <button className='rounded p-2 bg-blue-500 w-60' onClick={handleGetSchemes}>Schemes</button>
-          <button className='rounded p-2 bg-blue-500 w-60' onClick={handleAddScheme}>Add Schemes</button>
-          <button className='rounded p-2 bg-blue-500 w-60' onClick={handleEligibleUser}>Eligible Users</button>
+          <button className='rounded p-2 bg-blue-500 w-60 cursor-pointer' onClick={handleAddUser}>Add User</button>
+          <button className='rounded p-2 bg-blue-500 w-60 cursor-pointer' onClick={handleGetUser}>Get Users</button>
+          <button className='rounded p-2 bg-blue-500 w-60 cursor-pointer' onClick={handleGetSchemes}>Schemes</button>
+          <button className='rounded p-2 bg-blue-500 w-60 cursor-pointer' onClick={handleAddScheme}>Add Schemes</button>
+          <button className='rounded p-2 bg-blue-500 w-60 cursor-pointer' onClick={handleEligibleUser}>Eligible Users</button>
         </div> }
         {user?.user?.role === 'officer' &&
         <div className=' mt-10 flex gap-2 pl-2 justify-around'>
-          <button className='rounded p-2 bg-blue-500 w-60' onClick={handleGetUser}>Get Users</button>
-          <button className='rounded p-2 bg-blue-500 w-60' onClick={handleGetSchemes}>Schemes</button>
-          <button className='rounded p-2 bg-blue-500 w-60' onClick={handleAddScheme}>Add Schemes</button>
-          <button className='rounded p-2 bg-blue-500 w-60' onClick={handleEligibleUser}>Eligible Users</button>
+          <button className='rounded p-2 bg-blue-500 w-60 cursor-pointer' onClick={handleGetUser}>Get Users</button>
+          <button className='rounded p-2 bg-blue-500 w-60 cursor-pointer' onClick={handleGetSchemes}>Schemes</button>
+          <button className='rounded p-2 bg-blue-500 w-60 cursor-pointer' onClick={handleAddScheme}>Add Schemes</button>
+          <button className='rounded p-2 bg-blue-500 w-60 cursor-pointer' onClick={handleEligibleUser}>Eligible Users</button>
         </div>}
         <div className='  m-5 p-5 shadow-blue-700'>
           {toggleAddUser &&  <AddUser setRefresh={setRefresh}/>}
@@ -178,7 +167,7 @@ const Dashboard = () => {
           {toggleGetSchemes && <Schemes schemes={schemes} setSchemes={setSchemes} setRefresh ={setRefresh} setUsers={setUsers} />}
           {toggleAddScheme &&<AddSchemes  setRefresh = {setRefresh} />}
           {toggleGetEligibleUser && <GetEligibleUsers eligibleUsers = {eligibleUsers}/>}
-          {toggleEditUser && <EditUser/>}
+          
         </div>
       </div>
     </>

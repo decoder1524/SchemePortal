@@ -137,7 +137,7 @@ const AddSchemes = ({setRefresh}) => {
             </div>
              <label htmlFor="schemeName" className='font-semibold'>Apply Link</label>
               <input type="text" className='p-2 block' name="applyLink" id="applyLink" placeholder='Apply Link' required />
-            <button type="submit" className='bg-blue-600 p-2 rounded mt-3 '>Add Scheme</button>
+            <button type="submit" className='bg-blue-600 p-2 rounded mt-3 cursor-pointer '>Add Scheme</button>
           </div>
         </form>
       </div>

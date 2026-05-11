@@ -49,7 +49,7 @@ const user = JSON.parse(localStorage.getItem("user"))
           profilePhoto: userProfile?.profilephoto,
           firstName: userProfile?.firstName,
           lastName: userProfile?.lastName,
-          age: userProfile?.age,
+          age: Number(userProfile?.age),
           gender: userProfile?.gender,
           marital_status: userProfile?.marital_status,
           DOB: userProfile?.dob,
@@ -67,8 +67,8 @@ const user = JSON.parse(localStorage.getItem("user"))
           occupation_status: userProfile?.occupation_status
 
         });
-
       } catch (error) {
+        setAge(Number(userProfile?.age))
         console.log(error);
 
       }
