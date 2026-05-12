@@ -36,6 +36,14 @@ const ContactUs = () => {
           </div>
       </div>
 
+      <div className='container borer w-screen mt-10'>
+        <h2 className='text-3xl '>Records</h2>
+        <hr className='w-screen'/>
+        <div>
+          <ul></ul>
+        </div>
+      </div>
+
     </>
   )
 }

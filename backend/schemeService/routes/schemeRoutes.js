@@ -9,7 +9,5 @@ router.route('/delete-scheme/:schemeId').delete(authMiddleware,deleteScheme);
 router.route('/get-scheme/:schemeId').get(authMiddleware,getScheme);
 router.route('/get-schemes').get(authMiddleware,getSchemes);
 router.route('/get-schemesRule').get(authMiddleware,getSchemesRules);
-router.route('/feedback').post(authMiddleware,postFeedBack);
-router.route('/getFeedback').get(authMiddleware,getFeedback);
 
 export default router;
