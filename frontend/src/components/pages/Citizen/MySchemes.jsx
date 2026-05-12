@@ -6,7 +6,8 @@ import { toast } from 'react-toastify';
 const MySchemes = () => {
   const user = JSON.parse(localStorage.getItem("user"))
   const [schemes, setSchemes] = useState([]);
-  const userId = user?.user?.userId
+  const userId = user?.user?.userId;
+    const [allSchemes, setAllSchemes] = useState([]);
   // console.log(user?.user?.userId);
   const navigate = useNavigate();
   useEffect(() => {
@@ -23,6 +24,7 @@ const MySchemes = () => {
           );
           // console.log(schemesFetched);
           setSchemes(schemesFetched)
+          setAllSchemes(schemesFetched);
 
         } catch (error) {
           console.log(error);
@@ -34,16 +36,33 @@ const MySchemes = () => {
         console.log(error);
       }
     })()
-  }, [schemes])
+  }, [userId])
 
   const handleGetScheme = (schemeid) => {
     // console.log(schemeid);
     navigate(`/get-scheme/${schemeid}`)
   };
-
+   const handleChange = (e) => {
+        const value = e.target.value;
+        if (value === 'all') {
+            setSchemes(allSchemes);
+            return;
+        }
+        const filteredSchemes = allSchemes.filter(
+            scheme => scheme?.government.toLowerCase() === value.toLowerCase()
+        );
+        setSchemes(filteredSchemes);
+    };
 
   return (
    <>
+       <div className='container w-full h-10 flex m-10'>
+        <select name="filter" id="filter" className='border border-blue-500 rounded w-60' onChange={handleChange}>
+          <option value="all">All</option>
+          <option value="state government">State Government Schemes</option>
+          <option value="central government">Central Government Schemes</option>
+        </select>
+      </div>
       <div className="container rounded-2xl m-auto p-3 mt-5 shadow-2xl border border-white">
         {schemes?.length > 0 ?
           (

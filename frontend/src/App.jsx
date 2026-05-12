@@ -9,8 +9,6 @@ import UserProfile from './components/UserProfile'
 import CreateProfile from './components/CreateProfile'
 import Herosection from './components/Herosection'
 import AddUser from './components/pages/admin/AddUser'
-import ContactUs from './components/pages/Citizen/ContactUs'
-import AboutUs from './components/pages/Citizen/AboutUs'
 import AddSchemes from './components/pages/Officer/AddSchemes'
 import GetUsers from './components/pages/admin/GetUsers'
 import Schemes from './components/pages/Officer/Schemes'
@@ -26,16 +24,16 @@ import PrivateRoutes from './components/PrivateRoutes'
 import PublicRoutes from './components/PublicRoutes'
 import OfficerRoutes from './components/OfficerRoutes'
 import ChangePassword from './components/ChangePassword'
+import NotFound from './components/pages/NotFound'
 function App() {
   return (
     <>
       <ToastContainer />
       <Navbar />
       <Routes>
+        <Route path='*' element={<NotFound/>}/>
         <Route path='/' element={<Herosection />} />
         <Route path='/logout' element={<Herosection />} />
-        <Route path='/contact-us' element={<ContactUs />} />
-        <Route path='/about-us' element={<AboutUs />} />
         <Route element={<PublicRoutes />} >
           <Route path='/signup' element={<Signup />} />
           <Route path='/login' element={<Login />} />

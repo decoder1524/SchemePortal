@@ -44,7 +44,6 @@ const Schemes = ({ schemes, setSchemes }) => {
 
     <>
       <div className='container w-full h-10 flex '>
-        
         <select name="filter" id="filter" className='border border-blue-500 rounded w-60' onChange={handleChange}>
           <option value="all">All</option>
           <option value="state government">State Government Schemes</option>
