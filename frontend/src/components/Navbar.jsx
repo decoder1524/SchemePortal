@@ -32,6 +32,7 @@ const Navbar = () => {
                 <li className='hover:text-white' ><Link to={'/get-myscheme'}>My Schemes</Link></li>
                 <li className='hover:text-white rounded text-2xl text-center'><Link to={'/user-profile'}><FaUserLarge /></Link></li>
                 <li className='hover:text-black'><Link to={'/change-password'} className='ml-auto hover:bg-white rounded px-2 text-right'>Change Password</Link></li>
+                <li className='hover:text-black'><Link to={'/contact-us'} className='ml-auto hover:bg-white rounded px-2 text-right'>Contact Us</Link></li>
               </div>
             )}
             {user?.user?.role === 'officer' && (
@@ -39,6 +40,8 @@ const Navbar = () => {
                 <li className='hover:text-white'><Link to={'/adminDashboard'}>Dashboard</Link></li>
                 <li className='hover:text-white rounded text-2xl text-center'><Link to={'/user-profile'}><FaUserLarge /></Link></li>
                 <li className='hover:text-black'><Link to={'/change-password'} className='ml-auto hover:bg-white rounded px-2 text-right'>Change Password</Link></li>
+                <li className='hover:text-black'><Link to={'/getFeedback'} className='ml-auto hover:bg-white rounded px-2 text-right'>Feedbacks</Link></li>
+                
               </div>
             )}
             {user?.user?.role === 'admin' && (
@@ -46,6 +49,7 @@ const Navbar = () => {
                 <li className='hover:text-white'><Link to={'/adminDashboard'}>Dashboard</Link></li>
                 <li className='hover:text-white rounded text-2xl text-center'><Link to={'/user-profile'}><FaUserLarge /></Link></li>
                 <li className='hover:text-black'><Link to={'/change-password'} className='ml-auto hover:bg-white rounded px-2 text-right'>Change Password</Link></li>
+                <li className='hover:text-black'><Link to={'/getFeedback'} className='ml-auto hover:bg-white rounded px-2 text-right'>Feedbacks</Link></li>
               </div>
             )}
 
@@ -53,6 +57,7 @@ const Navbar = () => {
               <div className='flex px-3 gap-4 m-auto'  >
                 <li className='hover:bg-white rounded px-2 '><Link to={'/signup'}>Signup</Link></li>
                 <li className='ml-auto hover:bg-white rounded px-2 ' ><Link to={'/login'}>Login</Link></li>
+                 
               </div>
             )}
             {user?.isLoggedIn && (
@@ -74,6 +79,7 @@ const Navbar = () => {
                     <li className='hover:text-white' ><Link to={'/get-myscheme'}>My Schemes</Link></li>
                     <li className=' hover:text-white rounded'><Link to={'/user-profile'}>Profile</Link></li>
                     <li className='hover:text-black'><Link to={'/change-password'} className='ml-auto hover:bg-white rounded px-2 text-right'>Change Password</Link></li>
+                    <li className='hover:text-black'><Link to={'/contact-us'} className='ml-auto hover:bg-white rounded px-2 text-right'>Contact Us</Link></li>
                   </div>
                 )}
                 {user?.user?.role === 'admin' && (
@@ -81,6 +87,7 @@ const Navbar = () => {
                     <li className='hover:text-white'><Link to={'/adminDashboard'}>Dashboard</Link></li>
                     <li className=' hover:text-white rounded'><Link to={'/user-profile'}>Profile</Link></li>
                     <li className='hover:text-black'><Link to={'/change-password'} className='ml-auto hover:bg-white rounded px-2 text-right'>Change Password</Link></li>
+                    <li className='hover:text-black'><Link to={'/getFeedback'} className='ml-auto hover:bg-white rounded px-2 text-right'>Feedbacks</Link></li>
                   </div>
                 )}
                 {user?.user?.role === 'officer' && (
@@ -89,6 +96,7 @@ const Navbar = () => {
                     <li className='hover:text-white'><Link to={'/adminDashboard'}>Dashboard</Link></li>
                     <li className='hover:text-white rounded text-2xl text-center'><Link to={'/user-profile'}><FaUserLarge /></Link></li>
                     <li className='hover:text-black'><Link to={'/change-password'} className='ml-auto hover:bg-white rounded px-2 text-right'>Change Password</Link></li>
+                    <li className='hover:text-black'><Link to={'/getFeedback'} className='ml-auto hover:bg-white rounded px-2 text-right'>Feedbacks</Link></li>
                   </div>
                 )}
 

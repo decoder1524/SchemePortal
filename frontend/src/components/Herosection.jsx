@@ -9,7 +9,7 @@ const Herosection = () => {
             <h1 className='font-bold text-5xl text-blue-500 max-sm:text-3xl '>Hi, {user?.user?.role}</h1> 
             
             </>}
-            {user.user.role === 'admin' ? <> <h2 className='font-bold text-5xl text-blue-300 max-sm:text-3xl ' >Manage Government Schemes</h2> <p className='font-bold text-3xl m-2 mb-3 text-gray-400'> You Are Assigned For </p> </> :<> <h2 className='font-bold text-5xl text-blue-300 max-sm:text-3xl ' >Discover Government Schemes</h2><p className='font-bold text-3xl m-2 mb-3 text-gray-400'> You Are Eligible For </p> </>  }
+            {user?.user?.role === 'admin' ? <> <h2 className='font-bold text-5xl text-blue-300 max-sm:text-3xl ' >Manage Government Schemes</h2> <p className='font-bold text-3xl m-2 mb-3 text-gray-400'> You Are Assigned For </p> </> :<> <h2 className='font-bold text-5xl text-blue-300 max-sm:text-3xl ' >Discover Government Schemes</h2><p className='font-bold text-3xl m-2 mb-3 text-gray-400'> You Are Eligible For </p> </>  }
             
             
             

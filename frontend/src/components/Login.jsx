@@ -21,6 +21,7 @@ const Login = () => {
         console.log(res.data);
         localStorage.setItem("token", res.data.token)
         toast.success("Login Success");
+        e.target.reset();
         try {
           const getUserData = await getProfile(userId);
           console.log(getUserData);

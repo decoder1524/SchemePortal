@@ -25,6 +25,8 @@ import PublicRoutes from './components/PublicRoutes'
 import OfficerRoutes from './components/OfficerRoutes'
 import ChangePassword from './components/ChangePassword'
 import NotFound from './components/pages/NotFound'
+import ContactUs from './components/pages/Citizen/ContactUs'
+import FeedBack from './components/pages/Officer/FeedBack'
 function App() {
   return (
     <>
@@ -50,6 +52,7 @@ function App() {
             <Route path='/schemes' element={<Schemes />} />
             <Route path='/get-eligible-users' element={<GetEligibleUsers />} />
             <Route path='/admindashboard' element={<Dashboard />} />
+            <Route path='/getFeedback' element ={<FeedBack/>}/>
           </Route>
           <Route path='/change-password' element={<ChangePassword />} />
           <Route path='/edit-profile' element={<EditProfile />} />
@@ -57,6 +60,7 @@ function App() {
           <Route path='/user-profile' element={<UserProfile />} />
           <Route path='/get-scheme/:schemeid' element={<Scheme />} />
           <Route path='/get-myscheme' element={<MySchemes />} />
+          <Route path='/contact-us' element={<ContactUs/>} />
         </Route>
       </Routes >
     </>

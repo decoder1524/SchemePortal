@@ -67,8 +67,8 @@ const user = JSON.parse(localStorage.getItem("user"))
           occupation_status: userProfile?.occupation_status
 
         });
-      } catch (error) {
         setAge(Number(userProfile?.age))
+      } catch (error) {
         console.log(error);
 
       }

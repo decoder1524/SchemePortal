@@ -21,6 +21,8 @@ export const editScheme = (data) => SCHEME_API.post(`/edit-scheme`, data)
 export const getScheme = (schemeId) => SCHEME_API.get(`/get-scheme/${schemeId}`)
 export const getSchemes = () => SCHEME_API.get(`/get-schemes`)
 export const deleteScheme = (schemeId) => SCHEME_API.delete(`/delete-scheme/${schemeId}`)
+export const feedBack = (data) => SCHEME_API.post(`/feedback`,data);
+export const getFeed = () => SCHEME_API.get(`/getFeedback`);
 
 export const checkEligibleScheme = (data) => ELIGIBLE_API.post(`/checkEligibile`, data);
 export const getEligibleScheme = (userId) => ELIGIBLE_API.get(`/getEligibleScheme/${userId}`);

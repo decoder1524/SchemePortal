@@ -6,7 +6,7 @@ export default async(req, res, next)=>{
         if(!token){
             return res.status(401).json({
                 success:false,
-                message:"Np token provided"
+                message:"No token provided"
             })
         }
         jwt.verify(token,process.env.JWT_SECRET_KEY,(err,decode)=>{
