@@ -1,3 +1,4 @@
+import Feedback from "../models/Feedback.js";
 
 export const postFeedBack = async (req,res) =>{
     const {userId, title, description} = req.body;
