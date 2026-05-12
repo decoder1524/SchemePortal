@@ -45,6 +45,9 @@ const ContactUs = () => {
               <tr>
                 <th>SNO</th>
                 <th>Scheme Title</th>
+                <th>Description</th>
+                <th>Status</th>
+
               </tr>
             </tbody>
           </table>

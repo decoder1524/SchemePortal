@@ -27,7 +27,7 @@ const FeedBack = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {feedback.map(feed => {
+                    {feedback?.map(feed => {
                         return <>
                             <tr>
                                 <td className='border'>{feed.userid}</td>

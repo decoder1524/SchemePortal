@@ -79,7 +79,7 @@ const checkEligibility = (user, rule) => {
     if (user?.income !== rule?.income) {
         reasons.push("Income mismatch")
     }
-    if (!rule?.gender.includes(user?.gender)) {
+    if (!rule?.gender?.includes(user?.gender)) {
         reasons.push("Gender Not Eligible")
     }
     if (!rule?.marital_status?.includes(user?.marital_status)) {
