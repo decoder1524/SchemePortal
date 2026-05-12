@@ -36,11 +36,18 @@ const ContactUs = () => {
           </div>
       </div>
 
-      <div className='container borer w-screen mt-10'>
+      <div className='container mt-10 m-5'>
         <h2 className='text-3xl '>Records</h2>
-        <hr className='w-screen'/>
-        <div>
-          <ul></ul>
+        <hr className='w-full'/>
+        <div className='container border mt-2 rounded shadow-2xl border-white'>
+          <table>
+            <tbody>
+              <tr>
+                <th>SNO</th>
+                <th>Scheme Title</th>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
 

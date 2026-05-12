@@ -41,8 +41,8 @@ export const eligbilityController = async (req, res) => {
 const checkAllScheme = (user, schemes) => {
     const eligibleScheme = [];
     const notEligibleScheme = [];
-    schemes.map(scheme => {
-        const result = checkEligibility(user, scheme.rules);
+    schemes?.map(scheme => {
+        const result = checkEligibility(user, scheme?.rules);
         if (result.eligible) {
             eligibleScheme.push({
                 schemeid: scheme.schemeid,
@@ -68,21 +68,21 @@ const checkAllScheme = (user, schemes) => {
 
 const checkEligibility = (user, rule) => {
     const reasons = [];
-    if (!((user.age >= rule.min_age) && (user.age <= rule.max_age))) {
+    if (!((user?.age >= rule?.min_age) && (user?.age <= rule?.max_age))) {
         reasons.push("Age not in range")
     }
 
-    const allowedCategories = rule.eligible_category;
-    if (!allowedCategories.includes(user.category)) {
+    const allowedCategories = rule?.eligible_category;
+    if (!allowedCategories?.includes(user?.category)) {
         reasons.push("Category not eligible")
     }
-    if (user.income !== rule.income) {
+    if (user?.income !== rule?.income) {
         reasons.push("Income mismatch")
     }
-    if (!rule.gender.includes(user.gender)) {
+    if (!rule?.gender.includes(user?.gender)) {
         reasons.push("Gender Not Eligible")
     }
-    if (!rule.marital_status.includes(user.marital_status)) {
+    if (!rule?.marital_status?.includes(user?.marital_status)) {
         reasons.push("Marital status mismatch")
     }
 
@@ -95,11 +95,11 @@ const checkEligibility = (user, rule) => {
         "Postgraduate": 5,
         "PHD": 6
     };
-    if (levels[user.qualification] < levels[rule.eligible_qualification]) {
+    if (levels[user?.qualification] < levels[rule?.eligible_qualification]) {
         reasons.push("Qualification not sufficient")
     }
 
-    if (user.occupation_status !== rule.eligible_occupation) {
+    if (user?.occupation_status !== rule?.eligible_occupation) {
         reasons.push("Occupation not match")
     }
 
