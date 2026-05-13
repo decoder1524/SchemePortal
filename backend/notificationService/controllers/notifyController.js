@@ -7,7 +7,7 @@ export const sendRegistrationMail = async (req,res)=>{
     
     try {
         const info = await transporter.sendMail({
-            from:'manishkumardewangan56@gmail.com',
+            from:process.env.SENDER_EMAIL,
             to:to,
             subject:"Registration Successfull",
             html: `
@@ -53,7 +53,7 @@ export const sendNewschemeMail = async (req,res)=>{
     try {
          const info = async (data)=>{
             return  await transporter.sendMail({
-            from:'manishkumardewangan56@gmail.com',
+            from:process.env.SENDER_EMAIL ,
             to:data.email,
             subject:"New Scheme",
             html: `
