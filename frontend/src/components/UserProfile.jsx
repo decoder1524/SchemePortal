@@ -26,7 +26,7 @@ const UserProfile = () => {
 
   return (
     <>
-      <div className="container mt-7 m-auto border max-sm:w-80 max-w-3xl p-4  rounded-3xl shadow-2xl  border-green-500">
+    {userData.length > 0 ?       <div className="container mt-7 m-auto border max-sm:w-80 max-w-3xl p-4  rounded-3xl shadow-2xl  border-green-500">
         <h1 className='text-center text-4xl text-blue-600  font-bold' >
           {user?.user?.role === 'admin' || user?.user?.role === 'officer' ? (user?.user?.role === 'officer' ? 'Officer' : 'Admin') : 'Citizen'} Profile</h1>
         <img src={
@@ -67,7 +67,11 @@ const UserProfile = () => {
         </div>
         <button className='p-2 bg-blue-500 rounded-lg m-auto flex mt-5 hover:text-white '><Link to={'/edit-profile'} >Edit Profile</Link></button>
 
-      </div>
+      </div> : <div className='text-center border mt-10 w-fit m-auto p-5 rounded-lg border-white shadow-2xl'>
+        <p className="text-2xl text-center font-bold text-green-400"> Profile Not Found </p>
+        <p className='m-5 text-lg font-semibold'>Go to <Link to={'/register-profile'} className='p-2 bg-blue-500 rounded'>Create Profile</Link></p>
+      </div> }
+
     </>
   )
 }
