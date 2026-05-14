@@ -14,7 +14,7 @@ const UserProfile = () => {
         const res = await getProfile(user.user.userId);
         // console.log(res);
         const userProfile = res?.data?.userProfile;
-        // console.log(userProfile);
+        console.log(userProfile);
         setUserData(userProfile);
       } catch (error) {
         console.log(error);
@@ -26,7 +26,7 @@ const UserProfile = () => {
 
   return (
     <>
-    {userData.length > 0 ?       <div className="container mt-7 m-auto border max-sm:w-80 max-w-3xl p-4  rounded-3xl shadow-2xl  border-green-500">
+    {userData ? <div className="container mt-7 m-auto border max-sm:w-80 max-w-3xl p-4  rounded-3xl shadow-2xl  border-green-500">
         <h1 className='text-center text-4xl text-blue-600  font-bold' >
           {user?.user?.role === 'admin' || user?.user?.role === 'officer' ? (user?.user?.role === 'officer' ? 'Officer' : 'Admin') : 'Citizen'} Profile</h1>
         <img src={
