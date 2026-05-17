@@ -35,4 +35,5 @@ export const getEligibleUsers = () => ELIGIBLE_API.get(`/getEligibleUsers`);
 
 export const sendRegistrationMail = (data) => NOTIFY_API.post('/sendRegistrationMail',data)
 export const sendNewSchemeMail = (data) => NOTIFY_API.post('/sendNewSchemeMail',data)
+export const sendNewSchemeMailSingle = (data) => NOTIFY_API.post('/sendNewSchemeMailSingle',data)
 export const getNotifications =  (data) => NOTIFY_API.get('/getNotifications')
